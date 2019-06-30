@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block code %}
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  
+}
+.center1 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  }
+table {
+  border-collapse: collapse;
+}
+
+table, td, th {
+  border: 1px solid black;
+}
+
+</style>
+<h2> Visualization Of Million Song Dataset <h2>
+<h2>DATA</h2>
+<p style="margin-left: 3.5em;padding: 0 7em 0 0;" >As this data set contains a million samples of song analysis, its entire size reaches 280GB.  In order to ease our exploration through this data set, we decided to base our first analysis on only a subset of 10,000 songs (1%, 1.8 GB compressed). We then decided to download an other subset of the full Million Song Dataset (sample with hashed starting with letters “A” to “F”) for a total of approximately 133’000 songs.
+</p>
+<h2>First look over the years</h2>
+<p style="margin-left: 3.5em;padding: 0 7em 2em 0;"> Let first have a look at the distribution of our data set over the year </p>
+<img src="static\image\year_distr.png" width="1000" height="400" class="center">
+<br>
+<p style="margin-left: 3.5em;padding: 0 7em 2em 0;"> Now have a look at the distribution of Popular Song over the year </p>
+<img src="static\image\year_vs_song.png" width="800" height="400" class="center">
+<br>
+<h2>Artist Location</h2>
+<img src="static\image\Artist_location.png" width="800" height="400" class="center">
+<p style="margin-left: 3.5em;padding: 0 7em 2em 23em;">This map represents every artist for which we have a latitude and a longitude. </p>
+
+<h2>Top 10 artist over the years</h2>
+<center>
+<table >
+  <tr>
+    <th>Artists of 1900's</th>
+    <th>Artists of 2000's</th>
+   </tr>
+  {% for row in range(dataset['artist_19'].values.size) %}
+
+  <tr>
+    <td>{{ dataset['artist_19'].values[row] }}</td>
+    <td>{{ dataset['artist_20'].values[row] }}</td>
+   </tr>
+{% endfor %}
+
+</table>
+</center>
+
+<h2>Feature Importances</h2>
+<img src="static\image\features.png" width="800" height="400" class="center">
+<h2>Model Selection<h2>
+<p style="margin-left: 3.5em;padding: 0 7em 2em 0;">We trained our data on different models to predict if a song is a hit song or not. Xgboost appears to be the one with the highest accuracy at 0.77667 score</p>
+<img src="static\image\model.png" width="400" height="400" class="center1">
+
+{% endblock %}

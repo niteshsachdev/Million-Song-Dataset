@@ -1,0 +1,86 @@
+{% extends "layout.html" %}
+{% block code %}
+
+
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+
+
+<body>
+<center>
+<h2>Select Year</h2>
+<p>The select Year defines a drop-down list:</p>
+
+<form method="POST">
+  <select name="Year">
+  <option value="1926">1926</option>
+  <option value="1927">1927</option>
+  <option value="1929">1929</option>
+  <option value="1930">1930</option>
+  <option value="1934">1934</option>
+  <option value="1935">1935</option>
+  <option value="1936">1936</option>
+  <option value="1940">1940</option>
+  <option value="1947">1947</option>
+  <option value="1950">1950</option>
+  {% for year in range(1953,2011):%}
+    <option value="{{year}}">{{year}}</option>
+   {% endfor %}
+  </select>
+  <br><br>
+  <input type="submit">
+</form>
+
+{% if out %}
+<br>
+<h2>Popular Song & Artist</h2></center>
+
+<table>
+  <tr>
+    <th>Song Name</th>
+    <th>Artist Name</th>
+    <th>Artist ID</th>
+    <th>Artist Hotttnesss</th>
+    <th>Duration</th>
+    <th>Release</th>
+    <th>song_hotttnesss</th>
+  </tr>
+  
+{% for row in range(dataset['title'].values.size) %}
+  <tr>
+    <td>{{ dataset['title'].values[row] }}</td>
+    <td>{{ dataset['artist_name'].values[row] }}</td>
+    <td>{{ dataset['artist_id'].values[row] }}</td>
+    <td>{{ dataset['artist_hotttnesss'].values[row] }}</td>
+    <td>{{ dataset['duration'].values[row] }}</td>
+    <td>{{ dataset['release'].values[row] }}</td>
+    <td>{{ dataset['song_hotttnesss'].values[row] }}</td>
+  </tr>
+{% endfor %}
+
+</table>
+{% endif %}
+
+</body>
+</html>
+
+
+	
+  {% endblock %}

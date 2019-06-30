@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block code %}
+<style>
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+new {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+</style>
+<body>
+<br>
+<br>
+<form action="#" method="POST">
+
+<Fieldset>
+            <legend>Song Prediction </legend>
+
+  <div class="new">
+    <label><b>Song Name</b></label>
+    <input type="text" placeholder="Enter Song Name" name="song" required>
+    <label><b>Aritist Familiarity</b></label>
+    <input type="text" placeholder="Enter Aritist Familiarity" name="artist_fam" required>
+    <label><b>Artist Hotness</b></label>
+    <input type="text" placeholder="Enter Aritist Hotttnesss" name="artist_hot" required>
+    <label><b>Artist ID</b></label>
+    <input type="text" placeholder="Enter Aritist ID" name="artist" required>
+    <label><b>Song Duration</b></label>
+    <input type="text" placeholder="Enter Song Duration" name="duration" required>
+    <label><b>end_of_fade_in</b></label>
+    <input type="text" placeholder="Enter start_of_fade_out" name="end_of_fade_out" required>
+    <label><b>key</b></label>
+    <input type="text" placeholder="Enter key" name="key" required>
+    <label><b>key_Confidence</b></label>
+    <input type="text" placeholder="Enter key_confidence" name="key_con" required>     
+    <label><b>Loudness</b></label>
+    <input type="text" placeholder="Enter Loudness" name="loudness" required>
+    <label><b>Mode</b></label>
+    <input type="text" placeholder="Enter Mode" name="Mode" required>
+    <label><b>start_of_fade_out</b></label>
+    <input type="text" placeholder="Enter Tempo" name="start_of_fade_out" required>
+    <label><b>Tempo</b></label>
+    <input type="text" placeholder="Enter Mode" name="tempo" required>
+    <label><b>time_signature_conf</b></label>
+    <input type="text" placeholder="Enter time_signature" name="time_signature_conf" required>
+    <label><b>Year</b></label>
+    <input type="text" placeholder="Enter Year" name="year" required>
+    <div1>
+      <input type="submit" value="Predict"></input>
+    </div>
+    {% if out %}
+    {% if s == 1.0 %}
+    {% set s = "This has been a Popular Song" %}
+    {% else %}
+    {% set s = "Not a popular song" %}
+    {% endif %}
+    <p><b>Prediction is : {{s}}</b></p>
+{% endif %}
+  </div>
+</Fieldset>
+</form>
+</body>
+
+
+
+{% endblock %}
